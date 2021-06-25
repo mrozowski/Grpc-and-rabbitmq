@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package com.mrozowski.study.grpc.api.v1;
+
+import "BridgeService.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+service RequestProcessorService {
+  rpc getResult(RequestIdentifier) returns (Result) {}
+  rpc processRequest(Request) returns (google.protobuf.Empty) {}
+}
+
+message Result {
+  string id = 1;
+  string requestId = 2;
+  string result = 3;
+  google.protobuf.Timestamp date = 4;
+}
+
+

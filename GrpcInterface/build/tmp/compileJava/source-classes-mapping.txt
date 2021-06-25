@@ -1,0 +1,44 @@
+com/mrozowski/study/grpc/api/v1/BridgeServiceGrpc.java
+ com.mrozowski.study.grpc.api.v1.BridgeServiceGrpc
+ com.mrozowski.study.grpc.api.v1.BridgeServiceGrpc$1
+ com.mrozowski.study.grpc.api.v1.BridgeServiceGrpc$2
+ com.mrozowski.study.grpc.api.v1.BridgeServiceGrpc$3
+ com.mrozowski.study.grpc.api.v1.BridgeServiceGrpc$BridgeServiceBaseDescriptorSupplier
+ com.mrozowski.study.grpc.api.v1.BridgeServiceGrpc$BridgeServiceBlockingStub
+ com.mrozowski.study.grpc.api.v1.BridgeServiceGrpc$BridgeServiceFileDescriptorSupplier
+ com.mrozowski.study.grpc.api.v1.BridgeServiceGrpc$BridgeServiceFutureStub
+ com.mrozowski.study.grpc.api.v1.BridgeServiceGrpc$BridgeServiceImplBase
+ com.mrozowski.study.grpc.api.v1.BridgeServiceGrpc$BridgeServiceMethodDescriptorSupplier
+ com.mrozowski.study.grpc.api.v1.BridgeServiceGrpc$BridgeServiceStub
+ com.mrozowski.study.grpc.api.v1.BridgeServiceGrpc$MethodHandlers
+com/mrozowski/study/grpc/api/v1/RequestProcessorServiceGrpc.java
+ com.mrozowski.study.grpc.api.v1.RequestProcessorServiceGrpc
+ com.mrozowski.study.grpc.api.v1.RequestProcessorServiceGrpc$1
+ com.mrozowski.study.grpc.api.v1.RequestProcessorServiceGrpc$2
+ com.mrozowski.study.grpc.api.v1.RequestProcessorServiceGrpc$3
+ com.mrozowski.study.grpc.api.v1.RequestProcessorServiceGrpc$MethodHandlers
+ com.mrozowski.study.grpc.api.v1.RequestProcessorServiceGrpc$RequestProcessorServiceBaseDescriptorSupplier
+ com.mrozowski.study.grpc.api.v1.RequestProcessorServiceGrpc$RequestProcessorServiceBlockingStub
+ com.mrozowski.study.grpc.api.v1.RequestProcessorServiceGrpc$RequestProcessorServiceFileDescriptorSupplier
+ com.mrozowski.study.grpc.api.v1.RequestProcessorServiceGrpc$RequestProcessorServiceFutureStub
+ com.mrozowski.study.grpc.api.v1.RequestProcessorServiceGrpc$RequestProcessorServiceImplBase
+ com.mrozowski.study.grpc.api.v1.RequestProcessorServiceGrpc$RequestProcessorServiceMethodDescriptorSupplier
+ com.mrozowski.study.grpc.api.v1.RequestProcessorServiceGrpc$RequestProcessorServiceStub
+com/mrozowski/study/grpc/api/v1/RequestProcessor.java
+ com.mrozowski.study.grpc.api.v1.RequestProcessor
+ com.mrozowski.study.grpc.api.v1.RequestProcessor$Result
+ com.mrozowski.study.grpc.api.v1.RequestProcessor$Result$1
+ com.mrozowski.study.grpc.api.v1.RequestProcessor$Result$Builder
+ com.mrozowski.study.grpc.api.v1.RequestProcessor$ResultOrBuilder
+com/mrozowski/study/grpc/api/v1/BridgeServiceOuterClass.java
+ com.mrozowski.study.grpc.api.v1.BridgeServiceOuterClass
+ com.mrozowski.study.grpc.api.v1.BridgeServiceOuterClass$Request
+ com.mrozowski.study.grpc.api.v1.BridgeServiceOuterClass$Request$1
+ com.mrozowski.study.grpc.api.v1.BridgeServiceOuterClass$Request$Builder
+ com.mrozowski.study.grpc.api.v1.BridgeServiceOuterClass$RequestIdentifier
+ com.mrozowski.study.grpc.api.v1.BridgeServiceOuterClass$RequestIdentifier$1
+ com.mrozowski.study.grpc.api.v1.BridgeServiceOuterClass$RequestIdentifier$Builder
+ com.mrozowski.study.grpc.api.v1.BridgeServiceOuterClass$RequestIdentifierOrBuilder
+ com.mrozowski.study.grpc.api.v1.BridgeServiceOuterClass$RequestOrBuilder
+ com.mrozowski.study.grpc.api.v1.BridgeServiceOuterClass$RequestStatus
+ com.mrozowski.study.grpc.api.v1.BridgeServiceOuterClass$RequestStatus$1
