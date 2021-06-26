@@ -1,4 +1,4 @@
-package com.mrozowski.requestprocessor.datasource;
+package com.mrozowski.requestprocessor.processor;
 
 import lombok.Builder;
 import lombok.Value;
@@ -6,14 +6,13 @@ import lombok.Value;
 import com.mrozowski.requestprocessor.utils.Decision;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
+import java.util.Date;
 
 @Value
 @Builder
-public class ResultEntity {
-  UUID id;
-  UUID requestId;
-  String result;
+public class ReportData {
+  String name;
   Decision decision;
-  LocalDateTime date;
+  LocalDateTime requestDate;
+  LocalDateTime resultDate;
 }

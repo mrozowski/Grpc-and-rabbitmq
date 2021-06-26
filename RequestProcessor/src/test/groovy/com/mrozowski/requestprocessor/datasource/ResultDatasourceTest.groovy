@@ -1,6 +1,9 @@
 package com.mrozowski.requestprocessor.datasource
 
+import com.mrozowski.requestprocessor.utils.Decision
 import spock.lang.Specification
+
+import java.time.LocalDateTime
 
 class ResultDatasourceTest extends Specification {
 
@@ -19,6 +22,7 @@ class ResultDatasourceTest extends Specification {
       .id(UUID.fromString("21f8788c-78e1-4bc3-b651-a9ad0853ada1"))
       .requestId(UUID.fromString("31f8788c-78e1-4bc3-b651-a9ad0853ada8"))
       .result("someResult")
-      .date(new Date())
+      .decision(Decision.DENIED)
+      .date(LocalDateTime.MIN)
       .build()
 }
