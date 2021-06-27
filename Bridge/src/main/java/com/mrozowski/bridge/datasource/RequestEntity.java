@@ -1,18 +1,19 @@
 package com.mrozowski.bridge.datasource;
 
 import lombok.Builder;
-import lombok.Value;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Value
+@Getter
 @Builder
 public class RequestEntity {
 
-  UUID id;
-  String name;
-  String request;
-  RequestStatus status;
-  LocalDateTime date;
+  private final UUID id;
+  private final String name;
+  private final String request;
+  private final LocalDateTime date;
+  @Setter private RequestStatus status;
 }
