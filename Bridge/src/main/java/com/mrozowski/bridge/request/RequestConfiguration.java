@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 
 import com.mrozowski.bridge.datasource.RequestEntity;
 import com.mrozowski.bridge.datasource.RequestRepository;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -12,11 +13,12 @@ import org.springframework.context.annotation.Configuration;
 class RequestConfiguration {
 
   private final RequestRepository requestRepository;
-  private final RequestSender requestSender = requestEntity -> { };
+  private final RequestSender requestSender;
+  private final ApplicationEventPublisher eventPublisher;
 
   @Bean
   SaveRequestUseCase saveRequestUseCase(){
-    return new SaveRequestUseCase(requestRepository);
+    return new SaveRequestUseCase(requestRepository, eventPublisher);
   }
 
   @Bean

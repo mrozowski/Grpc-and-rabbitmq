@@ -5,6 +5,8 @@ import lombok.RequiredArgsConstructor;
 import com.mrozowski.bridge.datasource.RequestEntity;
 import com.mrozowski.bridge.datasource.RequestRepository;
 import com.mrozowski.bridge.datasource.RequestStatus;
+import com.mrozowski.bridge.request.event.RequestSavedEvent;
+import org.springframework.context.ApplicationEventPublisher;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -13,12 +15,15 @@ import java.util.UUID;
 public class SaveRequestUseCase {
 
   private final RequestRepository requestRepository;
+  private final ApplicationEventPublisher eventPublisher;
 
   public UUID save(UserRequest request) {
     validateRequest(request);
     var requestEntity = createRequestEntity(request);
 
     requestRepository.add(requestEntity);
+    eventPublisher.publishEvent(new RequestSavedEvent(requestEntity.getId()));
+
     return requestEntity.getId();
   }
 
