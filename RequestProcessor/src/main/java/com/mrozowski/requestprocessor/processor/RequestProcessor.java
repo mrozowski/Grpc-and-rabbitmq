@@ -20,7 +20,7 @@ import static com.mrozowski.requestprocessor.utils.DateHelper.toStringData;
 @RequiredArgsConstructor
 class RequestProcessor implements Processor {
 
-  private static final char NEW_LINE = '\n';
+  private static final String NEW_LINE = System.getProperty("line.separator");
   private final ResultRepository resultRepository;
   private final ApplicationEventPublisher eventPublisher;
 
@@ -28,7 +28,7 @@ class RequestProcessor implements Processor {
   @Override
   @SneakyThrows
   public void process(RequestData request) {
-    TimeUnit.SECONDS.sleep(1);  //Add some delay to simulate long processing
+    TimeUnit.SECONDS.sleep(10);  //Add some delay to simulate long processing
 
     var decision = makeDecision();
     var responseMessage = createResponseMessage(request, decision);

@@ -22,6 +22,7 @@ import net.devh.boot.grpc.server.service.GrpcService;
 import java.time.Instant;
 import java.util.UUID;
 
+import static com.mrozowski.requestprocessor.utils.DateHelper.getTimestamp;
 import static com.mrozowski.requestprocessor.utils.DateHelper.toDate;
 
 @Slf4j
@@ -78,10 +79,7 @@ class RequestProcessorGrpcService extends RequestProcessorServiceImplBase {
         .setId(result.getId().toString())
         .setRequestId(result.getRequestId().toString())
         .setResult(result.getResult())
-        .setDate(Timestamp.newBuilder()
-            .setSeconds(date.getSecond())
-            .setNanos(date.getNano())
-            .build())
+        .setDate(getTimestamp(result.getDate()))
         .build();
   }
 }
