@@ -2,7 +2,6 @@ package com.mrozowski.bridge.grpc;
 
 import lombok.RequiredArgsConstructor;
 
-import com.google.protobuf.Timestamp;
 import com.mrozowski.bridge.datasource.RequestEntity;
 import com.mrozowski.bridge.request.RequestSender;
 import com.mrozowski.bridge.result.ResultDto;
@@ -13,9 +12,6 @@ import com.mrozowski.study.grpc.api.v1.BridgeServiceOuterClass.RequestIdentifier
 import com.mrozowski.study.grpc.api.v1.RequestProcessor.Result;
 import com.mrozowski.study.grpc.api.v1.RequestProcessorServiceGrpc.RequestProcessorServiceBlockingStub;
 
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.UUID;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
