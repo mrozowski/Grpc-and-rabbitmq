@@ -1,0 +1,6 @@
+reporter:
+  datasource:
+    jdbc-url: jdbc:postgresql://localhost:5433/report
+    username: mrozu
+    password: mrozu
+

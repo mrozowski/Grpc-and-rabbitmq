@@ -1,0 +1,30 @@
+version: '3.5'
+services:
+  postgres:
+    image: postgres:10
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_DB: "report"
+      POSTGRES_USER: "mrozu"
+      POSTGRES_PASSWORD: "mrozu"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+        reservations:
+          memory: 1G
+
+  rabbitmq:
+    image: rabbitmq:management
+    ports:
+      - "5673:5672"
+      - "15673:15672"
+    deploy:
+      resources:
+        limits:
+          memory: 750M
+        reservations:
+          memory: 750M
