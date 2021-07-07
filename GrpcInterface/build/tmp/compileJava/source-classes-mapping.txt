@@ -42,3 +42,11 @@ com/mrozowski/study/grpc/api/v1/BridgeServiceOuterClass.java
  com.mrozowski.study.grpc.api.v1.BridgeServiceOuterClass$RequestOrBuilder
  com.mrozowski.study.grpc.api.v1.BridgeServiceOuterClass$RequestStatus
  com.mrozowski.study.grpc.api.v1.BridgeServiceOuterClass$RequestStatus$1
+com/mrozowski/study/grpc/api/v1/ReporterService.java
+ com.mrozowski.study.grpc.api.v1.ReporterService
+ com.mrozowski.study.grpc.api.v1.ReporterService$Decision
+ com.mrozowski.study.grpc.api.v1.ReporterService$Decision$1
+ com.mrozowski.study.grpc.api.v1.ReporterService$ReportData
+ com.mrozowski.study.grpc.api.v1.ReporterService$ReportData$1
+ com.mrozowski.study.grpc.api.v1.ReporterService$ReportData$Builder
+ com.mrozowski.study.grpc.api.v1.ReporterService$ReportDataOrBuilder

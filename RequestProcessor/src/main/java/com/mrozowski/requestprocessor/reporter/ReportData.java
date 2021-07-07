@@ -1,4 +1,4 @@
-package com.mrozowski.requestprocessor.processor;
+package com.mrozowski.requestprocessor.reporter;
 
 import lombok.Builder;
 import lombok.Value;
