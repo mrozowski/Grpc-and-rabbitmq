@@ -4,19 +4,26 @@
 The main purpose of this project was to learn more about Grpc and RabbitMQ message broker.
 This project consists of 3 services **Bridge**, **Request Processor** and **Reporter**. Services communicate with each other using Grpc and RabbitMQ. 
 
+## Technologies
+* Spring
+* Grpc
+* RabbitMQ
+* Asciidocktor
+* Docker
+
 ## Bridge
-It's service made for receiving requests from clients. It has 3 REST endpoints
+This service works as a gate for a client. It receives requests from clients, store them and send to another service for processing. It has 3 REST endpoints
 * `sendRequest` - send a new request to the service
 * `getStatus` - get status of the request
 * `getResult` - get the request's result
 
 And one gRPC endpoint
-* `notifyRequestDone` - notify bridge that request was processed 
+* `notifyRequestDone` - notify bridge that process finished
 
 Bridge creates and stores client's requests. For simplicity, it stores requests in memory (inside list). After Bridge store request it sends it to `RequestProcessor` service using gRPC protocol.
 
 ## Request Processor (RP)
-RP does not use REST endpoints. It uses gRPC to communicate with Bridge and RabbitMQ for communication with Reporter service. After it receives requests. It starts processing.
+RP does not use REST endpoints. It uses gRPC to communicate with Bridge and RabbitMQ for communication with Reporter service. After it receives requests it starts processing.
 
 gRPC endpoints:
 * `processRequest` - send request for processing
