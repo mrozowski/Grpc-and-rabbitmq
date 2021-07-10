@@ -31,6 +31,7 @@ gRPC endpoints:
 
 #### Processing
 The process of the request is very simple. It generates a new string based on request and adds information if the request was approved or denied - that decision is made randomly. Then it stores the result in the database (here again for simplicity I used List instead of real database).
+
 Next, it sends a notification to Bridge about finished process. And sends process data to `Reporter` service using the queue.
 
 ## Reporter
@@ -38,3 +39,6 @@ Reporter receives reports messages only from RabbitMQ. And on the other side, it
 * `getReport` - return report with information like the number of processed requests, process time, popular topics, etc
 
 Reporter after receives a message from the queue it stores it in PostgreSQL database. Every message contains request topic, request data time, process date time, and decision.
+
+## gRPC
+Proto files and generated classes are inside catalog `GrpcInterface`. Generated `JAR` file is used as a library in Bridge, RP and Reporter services. Reporter does not use Grpc for communication like Bridge and RP, however, it receives a protobuf object as a message from RabbitMQ
