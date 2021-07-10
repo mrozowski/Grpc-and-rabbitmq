@@ -1,0 +1,61 @@
+[plantuml,importing-steps,svg]
+-----
+@startuml
+!pragma teoz true
+
+
+actor client
+participant Bridge as bridge
+database Database as db
+participant "Request Processor" as rp
+
+||10||
+== Receiving request from client ==
+
+
+autonumber
+
+note over client: request{\n name: 'topic', \n request: 'body'\n}
+client -> bridge: [POST] send request
+activate bridge
+bridge <-> db: save request
+bridge --> client: return request id
+bridge <-> rp: send request for processing
+activate rp
+deactivate bridge
+
+||10||
+== Request Processor response ==
+
+autonumber
+
+rp -> rp:  processing
+rp -> bridge: send notification about finished process
+activate bridge
+deactivate rp
+||10||
+bridge -> bridge: change request status
+||5||
+deactivate bridge
+
+||10||
+== Client ask for result ==
+
+autonumber
+
+client -> bridge: [GET] get request status
+activate bridge
+bridge <-> db: get request
+bridge --> client: return request status
+deactivate bridge
+...
+client -> bridge: [GET] get result
+activate bridge
+bridge -> rp: get result
+activate rp
+rp --> bridge: return result
+deactivate rp
+bridge --> client: return result
+deactivate bridge
+@enduml
+-----

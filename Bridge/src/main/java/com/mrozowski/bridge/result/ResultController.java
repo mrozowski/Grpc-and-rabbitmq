@@ -22,6 +22,12 @@ class ResultController {
     return ResponseEntity.ok(getResultUseCase.getResult(id));
   }
 
+  @ExceptionHandler({ RequestNotProcessedException.class })
+  @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+  public ResponseEntity<ErrorResponse> handleRequestNotProcessedException(RuntimeException exception) {
+    return getErrorResponse(exception.getMessage(), HttpStatus.BAD_REQUEST);
+  }
+
   @ExceptionHandler({ ResultNotFoundException.class })
   @ResponseStatus(value = HttpStatus.NOT_FOUND)
   public ResponseEntity<ErrorResponse> handleResultNotFoundException(RuntimeException exception) {

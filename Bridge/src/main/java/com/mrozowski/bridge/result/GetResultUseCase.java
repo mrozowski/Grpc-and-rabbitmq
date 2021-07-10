@@ -3,7 +3,9 @@ package com.mrozowski.bridge.result;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import com.mrozowski.bridge.datasource.RequestStatus;
 import com.mrozowski.bridge.grpc.ServiceNotAvailableException;
+import com.mrozowski.bridge.request.GetRequestInfoUseCase;
 import io.grpc.Status;
 import io.grpc.Status.Code;
 import io.grpc.StatusRuntimeException;
@@ -15,10 +17,15 @@ import java.util.UUID;
 public class GetResultUseCase {
 
   private final ResultReceiver resultReceiver;
+  private final GetRequestInfoUseCase getRequestInfoUseCase;
 
   public ResultDto getResult(UUID id) {
     try{
-      return resultReceiver.receive(id);
+      var status = getRequestInfoUseCase.getStatus(id);
+      if (status == RequestStatus.DONE)
+        return resultReceiver.receive(id);
+      else
+        throw new RequestNotProcessedException("Request still waiting for process");
 
     } catch (StatusRuntimeException e) {
       if (e.getStatus() == Status.NOT_FOUND)
