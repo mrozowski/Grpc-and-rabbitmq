@@ -1,0 +1,45 @@
+[plantuml,importing-steps,svg]
+-----
+@startuml
+!pragma teoz true
+
+participant Bridge as bridge
+participant "Request Processor" as rp
+database Database as db
+queue RabbitMQ as queue
+
+||10||
+== Processing request ==
+
+autonumber
+
+activate bridge
+bridge -> rp: send request
+activate rp
+
+rp -> rp: process request
+rp <-> db: save result
+rp --> bridge: notify about finished process
+deactivate bridge
+rp <-> queue: send process data
+activate queue
+deactivate rp
+||10||
+deactivate queue
+
+
+||10||
+== Request for result ==
+
+autonumber
+activate bridge
+bridge -> rp: get result
+activate rp
+rp <-> db: get result
+rp --> bridge: return result
+deactivate rp
+deactivate bridge
+
+|||
+@enduml
+-----
