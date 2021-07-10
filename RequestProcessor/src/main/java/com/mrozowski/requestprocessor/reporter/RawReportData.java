@@ -10,7 +10,7 @@ import java.util.Date;
 
 @Value
 @Builder
-public class ReportData {
+public class RawReportData {
   String name;
   Decision decision;
   LocalDateTime requestDate;

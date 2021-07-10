@@ -1,6 +1,20 @@
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5673
+    username: dev
+    password: dev
+
 reporter:
   datasource:
     jdbc-url: jdbc:postgresql://localhost:5433/report
     username: mrozu
     password: mrozu
+
+  messaging:
+    result:
+      queue: rp.result.report
+      exchange: rp.result
+      routing-key: report
+
 
