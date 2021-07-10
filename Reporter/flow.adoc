@@ -1,0 +1,43 @@
+[plantuml,importing-steps,svg]
+-----
+@startuml
+!pragma teoz true
+
+actor Analytic as analytic
+participant Reporter as reporter
+database Database as db
+queue "RabbitMQ" as queue
+
+
+
+== Receive data ==
+||10||
+autonumber
+activate queue
+queue -> reporter: Retrieve message
+activate reporter
+deactivate queue
+
+
+reporter -> reporter: process report
+reporter <-> db: store report
+deactivate reporter
+
+|||
+== Show report to Analytic ==
+||10||
+autonumber
+
+activate analytic
+analytic -> reporter: [GET] get report
+activate reporter
+reporter <-> db: get report data
+reporter -> reporter: create final report
+reporter --> analytic: return data
+
+deactivate reporter
+deactivate analytic
+
+|||
+@enduml
+-----

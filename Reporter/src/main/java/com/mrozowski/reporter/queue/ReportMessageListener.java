@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import com.google.protobuf.InvalidProtocolBufferException;
-import com.mrozowski.reporter.report.ReportService;
+import com.mrozowski.reporter.report.SaveReportUseCase;
 import com.mrozowski.study.grpc.api.v1.ReporterService.ReportData;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -14,14 +14,14 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 @RabbitListener(queues = "${reporter.messaging.result.queue}")
 class ReportMessageListener {
 
-  private final ReportService reportService;
+  private final SaveReportUseCase saveReportUseCase;
   @RabbitHandler
   void listen(byte[] message) {
     try{
       log.info("Message retrieved from queue");
 
       var reportData = ReportData.parseFrom(message);
-      reportService.saveReport(reportData);
+      saveReportUseCase.saveReport(reportData);
 
     } catch (InvalidProtocolBufferException e) {
       throw new IllegalArgumentException("Byte message could not be parsed to ReportData");

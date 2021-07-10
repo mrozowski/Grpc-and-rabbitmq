@@ -3,14 +3,13 @@ package com.mrozowski.reporter.queue;
 import lombok.RequiredArgsConstructor;
 
 
-import com.mrozowski.reporter.report.ReportService;
+import com.mrozowski.reporter.report.SaveReportUseCase;
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.amqp.support.converter.MessageConverter;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,7 +23,7 @@ class QueueConfiguration {
 
   private final QueueProperties properties;
   private final ConnectionFactory connectionFactory;
-  private final ReportService reportService;
+  private final SaveReportUseCase saveReportUseCase;
 
   @Bean
   public Queue queue() {
@@ -55,7 +54,7 @@ class QueueConfiguration {
 
   @Bean
   ReportMessageListener ReportMessageListener() {
-    return new ReportMessageListener(reportService);
+    return new ReportMessageListener(saveReportUseCase);
   }
 
 

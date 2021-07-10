@@ -11,10 +11,9 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 
-@Service
 @RequiredArgsConstructor
 @Slf4j
-public class ReportService {
+public class SaveReportUseCase {
 
   private final ReportRepository repository;
 
