@@ -2,7 +2,6 @@ package com.mrozowski.requestprocessor.reporter;
 
 import lombok.RequiredArgsConstructor;
 
-import com.mrozowski.requestprocessor.utils.DateHelper;
 import com.mrozowski.study.grpc.api.v1.ReporterService.Decision;
 import com.mrozowski.study.grpc.api.v1.ReporterService.ReportData;
 

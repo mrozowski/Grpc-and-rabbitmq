@@ -9,7 +9,7 @@ import java.time.format.DateTimeFormatter
 
 class DateHelperSpec extends Specification {
 
-  def "should parse timestamp to data"(){
+  def "should parse timestamp to data"() {
     given:
     var timestamp = getTimeStamp(getTestDate())
 
@@ -20,7 +20,7 @@ class DateHelperSpec extends Specification {
     date == getTestDate()
   }
 
-  def "should parse localDateTime to string"(){
+  def "should parse localDateTime to string"() {
     given:
     var localDateTime = getTestDate()
 
@@ -31,14 +31,25 @@ class DateHelperSpec extends Specification {
     result == "05-10-2021 20:15:10.123"
   }
 
-  static Timestamp getTimeStamp(LocalDateTime date){
+  def "should parse date to timestamp"() {
+    given:
+    var date = getTestDate()
+
+    when:
+    def timestamp = DateHelper.getTimestamp(date)
+
+    then:
+    timestamp.seconds == 1633457710
+  }
+
+  static Timestamp getTimeStamp(LocalDateTime date) {
     return Timestamp.newBuilder()
         .setSeconds(date.toEpochSecond(OffsetDateTime.now().getOffset()))
         .setNanos(date.nano)
         .build()
   }
 
-  static LocalDateTime getTestDate(){
+  static LocalDateTime getTestDate() {
     var formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss.SSS")
     return LocalDateTime.parse("05-10-2021 20:15:10.123", formatter)
   }
